@@ -13,7 +13,7 @@ Phase 2:
 => Service provider suggest solutions not just alerts
 
 Phase 3:
-=> more options to get notifications
+- more options to get notifications
 
 Phase 4:
-=> Integrate in it-admin-tools
+- Integrate in it-admin-tools

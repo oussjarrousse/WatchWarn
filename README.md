@@ -1,4 +1,4 @@
-# WatchWarn
+# Watchtower
 
 - Customers have accounts on the platform
 - Customers select technologies they use (or like to get alerts about)

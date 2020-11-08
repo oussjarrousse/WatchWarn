@@ -1,4 +1,7 @@
-Django
-django-crispy-forms
-django-filter
-djangorestframework
+tox
+pytest
+pytest-django
+pytest-pythonpath
+pytest-env
+pytest-cov
+pytest-xdist

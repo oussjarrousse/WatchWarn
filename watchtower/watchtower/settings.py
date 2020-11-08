@@ -19,9 +19,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'mcg33pf#adk7%d50k19%l%v$5j@@6#j(jy8kp9xaho_*144q%c'
-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -37,6 +34,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_extensions',
     'wachturm'
 ]
 
@@ -119,3 +117,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# HERE STARTS DYNACONF EXTENSION LOAD (Keep at the very bottom of settings.py)
+# Read more at https://dynaconf.readthedocs.io/en/latest/guides/django.html
+# and watch https://www.youtube.com/watch?v=Ms2kgfYZJ9M&t=2915s&ab_channel=CodeShow
+import dynaconf  # noqa
+settings = dynaconf.DjangoDynaconf(
+    __name__
+    #DJANGO_ENV
+)  # noqa
+# HERE ENDS DYNACONF EXTENSION LOAD (No more code below this line)

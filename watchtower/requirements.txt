@@ -1,0 +1,7 @@
+Django
+django-crispy-forms
+django-filter
+djangorestframework
+
+django-extensions
+dynaconf

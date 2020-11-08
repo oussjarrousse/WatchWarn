@@ -13,5 +13,7 @@ setup(
         'djangorestframework',
         'django-filter',
         'django-crispy-forms',
+        'django_extensions,
+        'dynaconf'
     ]
 )

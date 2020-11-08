@@ -1,5 +1,5 @@
 [development]
-BASE_DIR = "PosixPath('/Users/ouss/Documents/workspace/Watchtower/watchtower')"
+BASE_DIR = "/Users/ouss/Documents/workspace/Watchtower/watchtower"
 DEBUG = true
 ALLOWED_HOSTS = []
 INSTALLED_APPS = [ "django.contrib.admin", "django.contrib.auth", "django.contrib.contenttypes", "django.contrib.sessions", "django.contrib.messages", "django.contrib.staticfiles", "django_extensions", "wachturm",]
@@ -35,4 +35,4 @@ NAME = "django.contrib.auth.password_validation.NumericPasswordValidator"
 
 [development.DATABASES.default]
 ENGINE = "django.db.backends.sqlite3"
-NAME = "PosixPath('/Users/ouss/Documents/workspace/Watchtower/watchtower/db.sqlite3')"
+NAME = "/Users/ouss/Documents/workspace/Watchtower/watchtower/db/db.sqlite3"

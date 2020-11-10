@@ -119,6 +119,9 @@
 # and watch https://www.youtube.com/watch?v=Ms2kgfYZJ9M&t=2915s&ab_channel=CodeShow
 import dynaconf  # noqa
 settings = dynaconf.DjangoDynaconf(
-    __name__
+    __name__,
+    SECRETS_FOR_DYNACONF='.secrets.yaml',
+    ENV_SWITCHER_FOR_DYNACONF='WATCHTOWER_ENV',
+    #INCLUDES_FOR_DYNACONF=['/etc/projectname/plugins/*'],
 )  #noqa
 # HEREENDS DYNACONF EXTENSION LOAD (No more code below this line)s

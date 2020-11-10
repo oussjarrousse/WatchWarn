@@ -5,3 +5,4 @@ pytest-pythonpath
 pytest-env
 pytest-cov
 pytest-xdist
+dynaconf[all]

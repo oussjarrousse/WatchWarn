@@ -14,6 +14,6 @@ setup(
         'django-filter',
         'django-crispy-forms',
         'django_extensions,
-        'dynaconf'
+        'dynaconf[all]'
     ]
 )

@@ -4,4 +4,4 @@ django-filter
 djangorestframework
 
 django-extensions
-dynaconf
+dynaconf[all]

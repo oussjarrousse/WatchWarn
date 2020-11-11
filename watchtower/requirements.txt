@@ -2,6 +2,6 @@ Django
 django-crispy-forms
 django-filter
 djangorestframework
-
+django-maintenance-mode
 django-extensions
 dynaconf[all]

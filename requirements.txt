@@ -6,3 +6,5 @@ pytest-env
 pytest-cov
 pytest-xdist
 dynaconf[all]
+django-two-factor-auth[phonenumbers]
+django-otp-yubikey

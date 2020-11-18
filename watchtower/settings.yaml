@@ -1,5 +1,6 @@
 ---
 default:
+  MAINTENANCE_MODE: null
   ALLOWED_HOSTS: []
   AUTH_PASSWORD_VALIDATORS:
   - NAME: django.contrib.auth.password_validation.UserAttributeSimilarityValidator
@@ -17,6 +18,11 @@ default:
   - django.contrib.staticfiles
   - maintenance_mode
   - wachturm
+  - django_otp
+  - django_otp.plugins.otp_static
+  - django_otp.plugins.otp_totp
+  - two_factor
+  - otp_yubikey
   LANGUAGE_CODE: en-us
   LOAD_DOTENV: true
   MIDDLEWARE:
@@ -25,6 +31,7 @@ default:
   - django.middleware.common.CommonMiddleware
   - django.middleware.csrf.CsrfViewMiddleware
   - django.contrib.auth.middleware.AuthenticationMiddleware
+  - django_otp.middleware.OTPMiddleware #Must come after 'django.contrib.auth.middleware.AuthenticationMiddleware',
   - django.contrib.messages.middleware.MessageMiddleware
   - django.middleware.clickjacking.XFrameOptionsMiddleware
   - maintenance_mode.middleware.MaintenanceModeMiddleware
@@ -46,6 +53,8 @@ default:
   USE_L10N: true
   USE_TZ: true
   WSGI_APPLICATION: watchtower.wsgi.application
+  LOGIN_URL: two_factor:login
+  LOGIN_REDIRECT_URL: two_factor:profile
 development:
   ALLOWED_HOSTS: ['*']
   DEBUG: true
@@ -57,7 +66,13 @@ development:
     - django.contrib.messages
     - django.contrib.staticfiles
     - django_extensions
+    - django_otp
+    - django_otp.plugins.otp_static
+    - django_otp.plugins.otp_totp
+    - two_factor
+    - otp_yubikey
     - wachturm
+    - maintenance_mode
   DATABASES:
     default:
       ENGINE: django.db.backends.sqlite3
@@ -67,3 +82,7 @@ testing:
     default:
       ENGINE: django.db.backends.sqlite3
       NAME: /Users/ouss/Documents/workspace/Watchtower/watchtower/db/testing.sqlite3
+maintenance:
+  #Maintenances Mode
+  # If True the maintenance-mode will be activated
+  MAINTENANCE_MODE: true

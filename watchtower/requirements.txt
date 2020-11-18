@@ -5,3 +5,6 @@ djangorestframework
 django-maintenance-mode
 django-extensions
 dynaconf[all]
+
+django-two-factor-auth[phonenumbers]
+django-otp-yubikey

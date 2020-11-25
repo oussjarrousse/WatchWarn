@@ -10,12 +10,11 @@
 # https://docs.djangoproject.com/en/3.1/ref/settings/
 # """
 #
-# from pathlib import Path
+from pathlib import Path
 #
-# # Build paths inside the project like this: BASE_DIR / 'subdir'.
-# BASE_DIR = Path(__file__).resolve().parent.parent
-#
-#
+# Build paths inside the project like this: BASE_DIR / 'subdir'.
+BASE_DIR = Path(__file__).resolve().parent.parent
+
 # # Quick-start development settings - unsuitable for production
 # # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 #
@@ -48,7 +47,7 @@
 #     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 # ]
 #
-# ROOT_URLCONF = 'watchtower.urls'
+ROOT_URLCONF = 'watchtower.urls'
 #
 # TEMPLATES = [
 #     {
@@ -66,14 +65,12 @@
 #     },
 # ]
 #
-# WSGI_APPLICATION = 'watchtower.wsgi.application'
-#
+WSGI_APPLICATION = 'watchtower.wsgi.application'
+
 #
 # # Database
 # # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 #
-# s
-# print(DATABASES)
 #
 #
 # # Password validation
@@ -109,22 +106,17 @@
 # USE_TZ = True
 #
 #
-# # Static files (CSS, JavaScript, Images)
-# # https://docs.djangoproject.com/en/3.1/howto/static-files/
-#
-# STATIC_URL = '/static/'
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/3.1/howto/static-files/
+
+STATIC_URL = '/static/'
+
+LOGIN_URL= 'two_factor:login'
+LOGIN_REDIRECT_URL= 'two_factor:profile'
 
 # HERE STARTS DYNACONF EXTENSION LOAD (Keep at the very bottom of settings.py)
 # Read more at https://dynaconf.readthedocs.io/en/latest/guides/django.html
 # and watch https://www.youtube.com/watch?v=Ms2kgfYZJ9M&t=2915s&ab_channel=CodeShow
-import dynaconf  # noqa
-settings = dynaconf.DjangoDynaconf(
-    __name__,
-    SECRETS_FOR_DYNACONF='.secrets.yaml',
-    ENV_SWITCHER_FOR_DYNACONF='WATCHTOWER_ENV',
-    #INCLUDES_FOR_DYNACONF=['/etc/projectname/plugins/*'],
-)  #noqa
-# HEREENDS DYNACONF EXTENSION LOAD (No more code below this line)s
 
 import dynaconf  # noqa
 settings = dynaconf.DjangoDynaconf(
@@ -143,6 +135,7 @@ settings = dynaconf.DjangoDynaconf(
     SECRETS_FOR_DYNACONF='.secrets.yaml',
     SILENT_ERRORS_FOR_DYNACONF=False
 )
+# HEREENDS DYNACONF EXTENSION LOAD (No more code below this line)
 
 import logging.config
 logging.config.dictConfig(settings.LOGGING)

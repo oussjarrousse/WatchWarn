@@ -7,7 +7,6 @@ default:
   - NAME: django.contrib.auth.password_validation.MinimumLengthValidator
   - NAME: django.contrib.auth.password_validation.CommonPasswordValidator
   - NAME: django.contrib.auth.password_validation.NumericPasswordValidator
-  BASE_DIR: /Users/ouss/Documents/workspace/Watchtower/watchtower
   DEBUG: false
   INSTALLED_APPS:
   - django.contrib.admin
@@ -35,8 +34,6 @@ default:
   - django.contrib.messages.middleware.MessageMiddleware
   - django.middleware.clickjacking.XFrameOptionsMiddleware
   - maintenance_mode.middleware.MaintenanceModeMiddleware
-  ROOT_URLCONF: watchtower.urls
-  STATIC_URL: /static/
   TEMPLATES:
   - APP_DIRS: true
     BACKEND: django.template.backends.django.DjangoTemplates
@@ -52,9 +49,6 @@ default:
   USE_I18N: true
   USE_L10N: true
   USE_TZ: true
-  WSGI_APPLICATION: watchtower.wsgi.application
-  LOGIN_URL: two_factor:login
-  LOGIN_REDIRECT_URL: two_factor:profile
   LOGGING_CONFIG: null
   LOGGING:
     disable_existing_loggers: false

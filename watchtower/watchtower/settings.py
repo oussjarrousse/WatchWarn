@@ -125,3 +125,27 @@ settings = dynaconf.DjangoDynaconf(
     #INCLUDES_FOR_DYNACONF=['/etc/projectname/plugins/*'],
 )  #noqa
 # HEREENDS DYNACONF EXTENSION LOAD (No more code below this line)s
+
+import dynaconf  # noqa
+settings = dynaconf.DjangoDynaconf(
+    __name__,
+    CORE_LOADERS_FOR_DYNACONF=['YAML'],
+    DOTENV_OVERRIDE_FOR_DYNACONF=False,
+    #DOTENV_PATH=
+    MERGE_ENABLED_FOR_DYNACONF=False,
+    ENCODING_FOR_DYNACONF='utf-8',
+    #ENV=development
+    ENVVAR_PREFIX_FOR_DYNACONF='WATCHTOWER',
+    ENV_SWITCHER_FOR_DYNACONF='WATCHTOWER_ENV',
+    #PRELOAD_FOR_DYNACONF=["/path/*", "other/settings.toml"],                # <-- Loaded first
+    SETTINGS_FILE_FOR_DYNACONF="settings.yaml",                              # <-- Loaded second (the main file)
+    #INCLUDES_FOR_DYNACONF=["other.module.settings", "other/settings.yaml"]  # <-- Loaded at the end
+    SECRETS_FOR_DYNACONF='.secrets.yaml',
+    SILENT_ERRORS_FOR_DYNACONF=False
+)
+
+import logging.config
+logging.config.dictConfig(settings.LOGGING)
+logger = logging.getLogger('watchtower')
+
+logger.info('Using {} configuration'.format(settings.current_env))

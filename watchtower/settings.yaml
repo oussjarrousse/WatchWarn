@@ -55,6 +55,44 @@ default:
   WSGI_APPLICATION: watchtower.wsgi.application
   LOGIN_URL: two_factor:login
   LOGIN_REDIRECT_URL: two_factor:profile
+  LOGGING_CONFIG: null
+  LOGGING:
+    disable_existing_loggers: false
+    formatters:
+      console:
+        format: "%(asctime)s %(name)s %(levelname)s %(lineno)d %(funcName)s : %(message)s"
+      django:
+        (): django.utils.log.ServerFormatter
+        format: "[{server_time}] {message}"
+        style: "{"
+    handlers:
+      console:
+        class: logging.StreamHandler
+        formatter: console
+      django:
+        class: logging.StreamHandler
+        formatter: django
+    loggers:
+      '':
+        level: INFO
+        handlers:
+        - console
+      watchtower:
+        level: INFO
+        handlers:
+        - console
+        propagate: false
+      django:
+        level: INFO
+        handlers:
+        - django
+        propagate: false
+      rest:
+        level: INFO
+        handlers:
+        - console
+        propagate: false
+    version: 1
 development:
   ALLOWED_HOSTS: ['*']
   DEBUG: true
@@ -73,6 +111,35 @@ development:
     - otp_yubikey
     - wachturm
     - maintenance_mode
+  LOGGING:
+    dynaconf_merge: true
+    handlers:
+      console:
+        class: logging.StreamHandler
+        formatter: console
+      django:
+        class: logging.StreamHandler
+        formatter: django
+    loggers:
+      '':
+        level: INFO
+        handlers:
+        - console
+      watchtower:
+        level: DEBUG
+        handlers:
+        - console
+        propagate: false # required to avoid double logging with root logger
+      rest:
+        level: INFO
+        handlers:
+        - console
+        propagate: false # required to avoid double logging with root logger
+      django:
+        handlers:
+        - django
+        level: INFO
+        propagate: false
   DATABASES:
     default:
       ENGINE: django.db.backends.sqlite3
@@ -86,3 +153,69 @@ maintenance:
   #Maintenances Mode
   # If True the maintenance-mode will be activated
   MAINTENANCE_MODE: true
+staging:
+  INSTALLED_APPS:
+  - django.contrib.admin
+  - django.contrib.auth
+  - django.contrib.contenttypes
+  - django.contrib.sessions
+  - django.contrib.messages
+  - django.contrib.staticfiles
+  - django_otp
+  - django_otp.plugins.otp_static
+  - django_otp.plugins.otp_totp
+  - two_factor
+  - otp_yubikey
+  - wachturm
+  - maintenance_mode
+  ALLOWED_HOSTS: ['staging.watchtower.com']
+production:
+  INSTALLED_APPS:
+  - django.contrib.admin
+  - django.contrib.auth
+  - django.contrib.contenttypes
+  - django.contrib.sessions
+  - django.contrib.messages
+  - django.contrib.staticfiles
+  - django_otp
+  - django_otp.plugins.otp_static
+  - django_otp.plugins.otp_totp
+  - two_factor
+  - otp_yubikey
+  - wachturm
+  - maintenance_mode
+  ALLOWED_HOSTS: ['watchtower.com']
+#  DATABASES:
+#    default:
+#      ENGINE: django.contrib.gis.db.backends.postgis
+#      NAME: wachturm
+#      USER: wachturm
+#      PASSWORD: ??????? in .secret.yaml
+#      HOST: localhost
+#      PORT: 5432
+  LOGGING:
+    dynaconf_merge: true
+    handlers:
+      console:
+        level: WARNING
+        class: logging.StreamHandler
+        formatter: console
+      django:
+        level: WARNING
+        class: logging.StreamHandler
+        formatter: django
+    loggers:
+      '':
+        level: WARNING
+        handlers:
+          - console
+      rest:
+        level: WARNING
+        handlers:
+          - django
+        propagate: false
+      django:
+        handlers:
+          - django
+        level: WARNING
+        propagate: false

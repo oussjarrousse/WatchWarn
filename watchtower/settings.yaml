@@ -139,6 +139,8 @@ development:
       ENGINE: django.db.backends.sqlite3
       NAME: /Users/ouss/Documents/workspace/Watchtower/watchtower/db/db.sqlite3
 testing:
+  DEBUG: true
+  ALLOWED_HOSTS: ['*']
   DATABASES:
     default:
       ENGINE: django.db.backends.sqlite3

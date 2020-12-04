@@ -137,14 +137,14 @@ development:
   DATABASES:
     default:
       ENGINE: django.db.backends.sqlite3
-      NAME: /Users/ouss/Documents/workspace/Watchtower/watchtower/db/db.sqlite3
+      NAME: db/db.sqlite3
 testing:
   DEBUG: true
   ALLOWED_HOSTS: ['*']
   DATABASES:
     default:
       ENGINE: django.db.backends.sqlite3
-      NAME: /Users/ouss/Documents/workspace/Watchtower/watchtower/db/testing.sqlite3
+      NAME: db/testing.sqlite3
 maintenance:
   #Maintenances Mode
   # If True the maintenance-mode will be activated

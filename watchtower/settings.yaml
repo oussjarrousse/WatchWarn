@@ -88,7 +88,8 @@ default:
         propagate: false
     version: 1
 development:
-  ALLOWED_HOSTS: ['*']
+  ALLOWED_HOSTS:
+  - '*'
   DEBUG: true
   INSTALLED_APPS:
     - django.contrib.admin
@@ -140,7 +141,8 @@ development:
       NAME: db/db.sqlite3
 testing:
   DEBUG: true
-  ALLOWED_HOSTS: ['*']
+  ALLOWED_HOSTS:
+  - '*'
   DATABASES:
     default:
       ENGINE: django.db.backends.sqlite3
@@ -164,7 +166,8 @@ staging:
   - otp_yubikey
   - wachturm
   - maintenance_mode
-  ALLOWED_HOSTS: ['staging.watchtower.com']
+  ALLOWED_HOSTS:
+  - staging.watchtower.com
 production:
   INSTALLED_APPS:
   - django.contrib.admin
@@ -180,7 +183,8 @@ production:
   - otp_yubikey
   - wachturm
   - maintenance_mode
-  ALLOWED_HOSTS: ['watchtower.com']
+  ALLOWED_HOSTS:
+  - watchtower.com
 #  DATABASES:
 #    default:
 #      ENGINE: django.contrib.gis.db.backends.postgis

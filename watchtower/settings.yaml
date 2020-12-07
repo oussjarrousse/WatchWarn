@@ -2,11 +2,6 @@
 default:
   MAINTENANCE_MODE: null
   ALLOWED_HOSTS: []
-  #
-  MIGRATION_MODULES: {}
-  AUTH_USER_MODEL: 'auth.User'
-  FIXTURE_DIRS: []
-  #
   AUTH_PASSWORD_VALIDATORS:
   - NAME: django.contrib.auth.password_validation.UserAttributeSimilarityValidator
   - NAME: django.contrib.auth.password_validation.MinimumLengthValidator
